@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using DapperORM_MVC.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -54,12 +55,12 @@ namespace DapperORM_MVC.Repository
             }
         }
 
-        public IEnumerable<dynamic> GetAllProducts()
+        public IEnumerable<Product> GetAllProducts()
         {
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                return connection.Query("SELECT * FROM Products");
+                return connection.Query<Product>("SELECT * FROM Products");
             }
         }
 

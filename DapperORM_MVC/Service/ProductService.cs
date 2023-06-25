@@ -1,4 +1,5 @@
-﻿using DapperORM_MVC.Repository;
+﻿using DapperORM_MVC.Domain.Models;
+using DapperORM_MVC.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,7 +55,7 @@ namespace DapperORM_MVC.Service
             }
         }
 
-        public void GetAllProducts()
+        public IEnumerable<Product> GetAllProducts()
         {
             Console.WriteLine("List of all products: ");
             var products = productRepository.GetAllProducts();
@@ -62,6 +63,8 @@ namespace DapperORM_MVC.Service
             {
                 Console.WriteLine($"Product ID: {product.Id}, Name: {product.ProductName}, CatgeoryId: {product.CategoryId}");
             }
+
+            return products;
         }
 
         public void SortProductsByMostSold()

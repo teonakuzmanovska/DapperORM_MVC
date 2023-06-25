@@ -19,15 +19,9 @@ namespace DapperORM_MVC.Controllers
 
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult GetAllProducts()
-        {
             var sortedProducts = _productService.GetAllProducts();
             // You can return a view or redirect to another action if needed.
             return View(sortedProducts);
         }
-
     }
 }

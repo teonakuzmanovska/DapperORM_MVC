@@ -23,7 +23,6 @@ namespace DapperORM_MVC.Service
         public void CreateCategoriesTable()
         {
             categoryRepository.CreateCategoriesTable();
-            Console.WriteLine("Table Categories created successfully!");
         }
 
         public void InsertCategories()
@@ -45,29 +44,14 @@ namespace DapperORM_MVC.Service
                 };
 
                 categoryRepository.InsertCategory(newCategory);
-                Console.WriteLine("New category inserted successfully!");
             }
         }
 
-        public void GetAllCategories()
+        public IEnumerable<dynamic> GetAllCategories()
         {
-            Console.WriteLine("List of all categories: ");
             var categories = categoryRepository.GetAllCategories();
-            foreach (var category in categories)
-            {
-                Console.WriteLine($"Category ID: {category.Id}, Name: {category.CategoryName}");
-            }
-        }
 
-        public void SortCategoriesByMostSold()
-        {
-            Console.WriteLine("Sorted categories by most sold: ");
-            var sortedCategories = categoryRepository.SortCategoriesByMostSold();
-            foreach (var sortedCategory in sortedCategories)
-            {
-                Console.WriteLine($"Catgeory Id: {sortedCategory.CategoryId}, Category Name: {sortedCategory.CategoryName}, Sold products: {sortedCategory.TotalSold}");
-            }
+            return categories;
         }
-
     }
 }

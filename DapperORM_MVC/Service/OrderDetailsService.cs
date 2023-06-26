@@ -24,7 +24,6 @@ namespace DapperORM_MVC.Service
         public void CreateOrderDetailsTable()
         {
             orderDetailsRepository.CreateOrderDetailsTable();
-            Console.WriteLine("Table OrderDetails created successfully!");
         }
 
         public void InsertOrderDetails()
@@ -44,17 +43,6 @@ namespace DapperORM_MVC.Service
                 };
 
                 orderDetailsRepository.InsertOrderDetails(newOrderDetails);
-                Console.WriteLine("New OrderDetails inserted successfully!");
-            }
-        }
-
-        public void GetAllOrderDetails()
-        {
-            Console.WriteLine("List of all orderdetails: ");
-            var orderDetails = orderDetailsRepository.GetAllOrderDetails();
-            foreach (var orderDetail in orderDetails)
-            {
-                Console.WriteLine($"OrderDetails ID: {orderDetail.OrderId},{orderDetail.ProductId}, Quantity: {orderDetail.Quantity}");
             }
         }
     }

@@ -26,7 +26,6 @@ namespace DapperORM_MVC.Service
         public void CreateProductsTable()
         {
             productRepository.CreateProductsTable();
-            Console.WriteLine("Table Products created successfully!");
         }
 
         public void InsertProducts()
@@ -50,8 +49,8 @@ namespace DapperORM_MVC.Service
                     LastUserId = 1,
                     LastDateUpdated = DateTime.Now
                 };
+
                 productRepository.InsertProduct(newProduct);
-                Console.WriteLine("New product inserted successfully!");
             }
         }
 
@@ -59,22 +58,8 @@ namespace DapperORM_MVC.Service
         {
             Console.WriteLine("List of all products: ");
             var products = productRepository.GetAllProducts();
-            foreach (var product in products)
-            {
-                Console.WriteLine($"Product ID: {product.Id}, Name: {product.ProductName}, CatgeoryId: {product.CategoryId}");
-            }
 
             return products;
-        }
-
-        public void SortProductsByMostSold()
-        {
-            Console.WriteLine("Sorted products by most sold: ");
-            var sortedProducts = productRepository.SortProductsByMostSold();
-            foreach (var sortedProduct in sortedProducts)
-            {
-                Console.WriteLine($"Product ID: {sortedProduct.Id}, Product name: {sortedProduct.ProductName}, Sold units: {sortedProduct.Quantity}");
-            }
         }
     }
 }

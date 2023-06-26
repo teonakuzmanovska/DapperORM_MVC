@@ -59,23 +59,15 @@ namespace DapperORM_MVC
 
             // Inserting new categories
             categoryService.InsertCategories();
-            // Get all categories
-            categoryService.GetAllCategories();
 
             // Inserting new products
             productService.InsertProducts();
-            // Get all products
-            productService.GetAllProducts();
 
             // Inserting new orders            
             orderService.InsertOrders();
-            // Get all orders
-            orderService.GetAllOrders();
 
             // Inserting new orderdetails
             orderDetailsService.InsertOrderDetails();
-            // Get all orderdetails
-            orderDetailsService.GetAllOrderDetails();
         }
     }
 }

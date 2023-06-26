@@ -23,7 +23,6 @@ namespace DapperORM_MVC.Service
         public void CreateOrdersTable()
         {
             orderRepository.CreateOrdersTable();
-            Console.WriteLine("Table Orders created successfully!");
         }
 
         public void InsertOrders()
@@ -52,26 +51,6 @@ namespace DapperORM_MVC.Service
                 };
 
                 orderRepository.InsertOrder(newOrder);
-                Console.WriteLine("New order inserted successfully!");
-            }
-        }
-
-        public void GetAllOrders()
-        {
-            var orders = orderRepository.GetAllOrders();
-            foreach (var order in orders)
-            {
-                Console.WriteLine($"Order ID: {order.Id}, Order date: {order.OrderDate}");
-            }
-        }
-
-        public void SortOrdersByDate()
-        {
-            Console.WriteLine("Sorted orders by date: ");
-            var sortedOrders = orderRepository.SortOrdersByDate();
-            foreach (var sortedOrder in sortedOrders)
-            {
-                Console.WriteLine($"Order ID: {sortedOrder.Id}, Order date: {sortedOrder.OrderDate}");
             }
         }
     }

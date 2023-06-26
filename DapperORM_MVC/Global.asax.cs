@@ -19,6 +19,13 @@ namespace DapperORM_MVC
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            InitializeDatabase();
+            PopulateDatabase();
+
+        }
+
+        public void InitializeDatabase()
+        {
             string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
             // Create instances of the services
@@ -38,6 +45,17 @@ namespace DapperORM_MVC
             productService.CreateProductsTable();
             orderService.CreateOrdersTable();
             orderDetailsService.CreateOrderDetailsTable();
+        }
+
+        public void PopulateDatabase()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+
+            // Create instances of the services
+            CategoryService categoryService = new CategoryService(connectionString);
+            ProductService productService = new ProductService(connectionString);
+            OrderService orderService = new OrderService(connectionString);
+            OrderDetailsService orderDetailsService = new OrderDetailsService(connectionString);
 
             // Inserting new categories
             categoryService.InsertCategories();
@@ -58,7 +76,6 @@ namespace DapperORM_MVC
             orderDetailsService.InsertOrderDetails();
             // Get all orderdetails
             orderDetailsService.GetAllOrderDetails();
-
         }
     }
 }

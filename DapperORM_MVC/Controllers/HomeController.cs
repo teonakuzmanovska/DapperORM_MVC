@@ -1,6 +1,7 @@
 ﻿using DapperORM_MVC.Service;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,7 +14,7 @@ namespace DapperORM_MVC.Controllers
 
         public HomeController()
         {
-            string connectionString = "server=localhost;Database=OrderDB_MVC;Trusted_Connection=True;MultipleActiveResultSets=true;";
+            string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
             _productService = new ProductService(connectionString);
         }
 
